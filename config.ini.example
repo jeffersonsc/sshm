@@ -1,0 +1,21 @@
+; Auth Methods types
+; ssh_agent
+; public_key => auth_key_file required
+; password => auth_password required
+
+local_port = 22
+auth_type = "ssh_agent"
+;auth_key_file = "/path/"
+;auth_password = "abc123"
+
+; Bastion server
+[server]
+host = "localhost"
+port = 22
+user = "user"
+
+; Server from connection
+[remote]
+host = "localhost"
+port = 22
+user = "user"
