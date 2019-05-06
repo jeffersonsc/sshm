@@ -7,25 +7,16 @@ import (
 	"net"
 	"os"
 
+	"github.com/jeffersonsc/sshm/pkg/endpoint"
 	"golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/agent"
 )
 
-// Endpoint represent connection interface infos
-type Endpoint struct {
-	Host string
-	Port int
-}
-
-func (e *Endpoint) String() string {
-	return fmt.Sprintf("%s:%d", e.Host, e.Port)
-}
-
 // SSHTunnel data infos for connection
 type SSHTunnel struct {
-	Local  *Endpoint
-	Server *Endpoint
-	Remote *Endpoint
+	Local  *endpoint.Endpoint
+	Server *endpoint.Endpoint
+	Remote *endpoint.Endpoint
 
 	Config *ssh.ClientConfig
 }
@@ -95,17 +86,17 @@ func PublicKeyFile(file string) ssh.AuthMethod {
 }
 
 func main() {
-	localEndpoint := &Endpoint{
+	localEndpoint := &endpoint.Endpoint{
 		Host: "localhost",
 		Port: 9000,
 	}
 
-	serverEndpoint := &Endpoint{
+	serverEndpoint := &endpoint.Endpoint{
 		Host: "xx.xxx.xx.xxx",
 		Port: 22,
 	}
 
-	remoteEndpoint := &Endpoint{
+	remoteEndpoint := &endpoint.Endpoint{
 		Host: "xx.xx.xx.xx",
 		Port: 22,
 	}
