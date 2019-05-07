@@ -65,6 +65,18 @@ func (st *SSHTunnel) Start() error {
 	}
 }
 
+// SelectAuthMethod from auth connection
+func SelectAuthMethod(method, keypath, pass string) ssh.AuthMethod {
+	switch method {
+	case "auth_key_file":
+		return PublicKeyFile(keypath)
+	case "password":
+		return Password(pass)
+	default:
+		return SSHAgent()
+	}
+}
+
 // SSHAgent return autehnticable method
 func SSHAgent() ssh.AuthMethod {
 	if sshAgent, err := net.Dial("unix", os.Getenv("SSH_AUTH_SOCK")); err == nil {
@@ -85,4 +97,9 @@ func PublicKeyFile(file string) ssh.AuthMethod {
 		return nil
 	}
 	return ssh.PublicKeys(key)
+}
+
+// Password method auth
+func Password(pass string) ssh.AuthMethod {
+	return ssh.Password(pass)
 }

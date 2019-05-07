@@ -14,8 +14,7 @@ host = "localhost"
 port = 22
 user = "user"
 
-; Server from connection
+; Server from connection nickname
 [remote]
 host = "localhost"
 port = 22
-user = "user"

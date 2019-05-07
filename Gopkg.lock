@@ -2,8 +2,16 @@
 
 
 [[projects]]
+  digest = "1:d37c61a335d13bc49b3f90e9e13c8686e4548839b69c58549e727afb2245c454"
+  name = "github.com/go-ini/ini"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c85607071cf08ca1adaf48319cd1aa322e81d8c1"
+  version = "v1.42.0"
+
+[[projects]]
   branch = "master"
-  digest = "1:6262d10603918986f791adc031f59f5c7f420110ec339c59c5ee29637d028291"
+  digest = "1:fb0708ec8ee3b256fdc84a99a9e843a06c4fd162e41b8e102dcadb998108954b"
   name = "golang.org/x/crypto"
   packages = [
     "curve25519",
@@ -14,6 +22,7 @@
     "poly1305",
     "ssh",
     "ssh/agent",
+    "ssh/knownhosts",
   ]
   pruneopts = "UT"
   revision = "a29dc8fdc73485234dbef99ebedb95d2eced08de"
@@ -29,21 +38,14 @@
   pruneopts = "UT"
   revision = "ca7f33d4116e3a1f9425755d6a44e7ed9b4c97df"
 
-[[projects]]
-  digest = "1:d37c61a335d13bc49b3f90e9e13c8686e4548839b69c58549e727afb2245c454"
-  name = "gopkg.in/ini.v1"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "c85607071cf08ca1adaf48319cd1aa322e81d8c1"
-  version = "v1.42.0"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/go-ini/ini",
     "golang.org/x/crypto/ssh",
     "golang.org/x/crypto/ssh/agent",
-    "gopkg.in/ini.v1",
+    "golang.org/x/crypto/ssh/knownhosts",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
